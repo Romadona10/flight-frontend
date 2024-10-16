@@ -1,0 +1,29 @@
+<mat-card>
+    <h2>OTP Verification</h2>
+  
+    <div class="spinner-container">
+      <mat-progress-spinner
+        [value]="countdownValue"
+        diameter="100"
+        strokeWidth="10"
+        color="primary"
+        mode="determinate">
+      </mat-progress-spinner>
+      <div class="countdown">{{ countdown }}s</div>
+    </div>
+  
+    <div *ngIf="otpGenerated && !copySuccess" class="otp-section">
+      <h3>Your OTP is:</h3>
+      <div class="otp-code">{{ otp }}</div>
+      <button mat-icon-button (click)="copyOtp()">
+        <!-- <mat-icon>content_copy</mat-icon> -->
+        <i class="fas fa-copy"></i> Copy
+      </button>
+      <span *ngIf="copySuccess" class="copied-message">Copied!</span>
+    </div>
+  
+    <!-- <div *ngIf="copySuccess" class="copied-message">
+      Copied!
+    </div> -->
+  <mat-card>
+  

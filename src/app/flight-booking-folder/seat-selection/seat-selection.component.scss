@@ -1,0 +1,78 @@
+
+mat-card {
+  display: flex;
+  justify-content: space-between; /* Ensure the legend stays on the left and seats grid on the right */
+  min-width: 400px;
+  margin: 2rem auto;
+  // padding: 2rem;
+  overflow-y: auto;
+  max-height: 400px; /* Set a maximum height for the scrollbar to appear when content overflows */
+
+ 
+}
+
+.legend {
+  display: flex;
+  flex-direction: column; /* Stack legend items vertically */
+  // margin-right: 20px; /* Space between legend and seat grid */
+  margin-top: 10px;
+  margin-bottom: 15px;
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; /* Space between legend items */
+  }
+
+  img {
+    margin-right: 10px;
+  }
+}
+
+.seat-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr); /* Adjust based on the number of seat columns (A, B, C, etc.) */
+  gap: 10px;
+
+  button {
+    position: relative;
+    margin: 2px;
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: none;
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+    border-radius: 4px;
+
+    // img {
+      
+    //   width: 100%; /* Make the seat image fill the button */
+    //   height: 100%;
+    // }
+
+    span {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%); /* Center the seat number inside the button */
+      color: white; /* Seat number color */
+      font-weight: bold;
+    }
+  }
+
+  // .available-seat {
+  //   background-color: #4caf50;
+  // }
+
+  // .unavailable-seat {
+  //   background-color: #f44336;
+  // }
+
+  // .selected-seat {
+  //   background-color: #2196f3;
+  // }
+
+ 
+}

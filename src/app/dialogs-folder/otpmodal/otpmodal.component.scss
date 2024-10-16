@@ -1,0 +1,38 @@
+mat-card {
+    text-align: center;
+    padding: 5px;
+  
+    h2 {
+      margin-bottom: 20px;
+    }
+  
+    .spinner-container {
+      position: relative;
+      display: inline-block;
+  
+      .countdown {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 20px;
+        font-weight: bold;
+      }
+    }
+  
+    .otp-section {
+      margin-top: 20px;
+  
+      .otp-code {
+        font-size: 15px;
+        margin-bottom: 10px;
+        letter-spacing: 2px;
+      }
+    }
+  
+    .otp-copied {
+      margin-top: 20px;
+      color: green;
+    }
+  }
+  

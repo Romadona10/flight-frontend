@@ -1,0 +1,139 @@
+<div class="booking-form-container">
+  <mat-card class="booking-card">
+    <mat-progress-bar *ngIf="isSearchingDeparture || isSearchingArrival" mode="query"></mat-progress-bar>
+    <mat-card-title> <i class="fas fa-plane-departure"></i> </mat-card-title>
+    <mat-card-content>
+      <form [formGroup]="bookingForm" (ngSubmit)="onSubmit()">
+        <div class="form-row">
+          <!-- Departure City/ Country Input -->
+          <mat-form-field appearance="outline" class="half-width">
+            <mat-label for="departureCity">Departure Airport</mat-label>
+            <mat-icon matPrefix>location_on</mat-icon>
+            <input matInput id="departureCity" placeholder="Enter departure city or country"
+              formControlName="departureCity" (input)="onDepartureCityInput($event)"
+              [matAutocomplete]="autoDeparture" />
+            <mat-autocomplete #autoDeparture="matAutocomplete" [displayWith]="displayAirport">
+              <mat-option *ngFor="let airport of departureAirports" [value]="airport">
+                {{ airport.name }},{{airport.country}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+
+          <!-- Swap Cities Icon -->
+          <div class="flow-icon" (click)="swapCities()">
+            <mat-icon>swap_horiz</mat-icon>
+          </div>
+
+          <!-- Arrival City/ Country Input -->
+          <mat-form-field appearance="outline" class="half-width">
+            <mat-label for="arrivalCity">Arrival Airport</mat-label>
+            <mat-icon matPrefix>location_on</mat-icon>
+            <input matInput id="arrivalCity" placeholder="Enter arrival city or country" formControlName="arrivalCity"
+              (input)="onArrivalCityInput($event)" [matAutocomplete]="autoArrival" />
+            <mat-autocomplete #autoArrival="matAutocomplete" [displayWith]="displayAirport">
+              <mat-option *ngFor="let airport of arrivalAirports" [value]="airport">
+                {{ airport.name }},{{airport.country}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        </div>
+
+        <!-- Date Pickers -->
+        <div class="form-row" style="gap: 25px;">
+          <mat-form-field appearance="outline" class="half-width">
+            <mat-label for="departureDate">Departure Date</mat-label>
+            <mat-icon matPrefix>event</mat-icon>
+            <input matInput id="departureDate" [matDatepicker]="departureDatePicker" formControlName="departureDate"
+              [matDatepickerFilter]="myDateFilter" />
+            <mat-datepicker-toggle matSuffix [for]="departureDatePicker"></mat-datepicker-toggle>
+            <mat-datepicker #departureDatePicker></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="half-width">
+            <mat-label for="returnDate">Return Date</mat-label>
+            <mat-icon matPrefix>event</mat-icon>
+            <input matInput id="returnDate" [matDatepicker]="returnDatePicker" formControlName="returnDate"
+              [matDatepickerFilter]="myDateFilter" />
+            <mat-datepicker-toggle matSuffix [for]="returnDatePicker"></mat-datepicker-toggle>
+            <mat-datepicker #returnDatePicker></mat-datepicker>
+          </mat-form-field>
+        </div>
+
+        <!-- Passenger Selection -->
+        <div class="form-row">
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label for="passengers">Passengers</mat-label>
+            <input matInput id="passengers" [value]="passengerLabel" readonly (click)="openPassengerSelect()" />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-select #passengerSelect (selectionChange)="updatePassengerLabel()">
+              <button class="select-button" mat-icon-button (click)="closePassengerSelect()">
+                <mat-icon>close</mat-icon>
+              </button>
+              <mat-select-trigger>
+                {{ passengerLabel }}
+              </mat-select-trigger>
+              <mat-option>
+                <div class="passenger-type">
+                  <mat-icon>person</mat-icon>
+                  <span>Adults</span>
+                  <button mat-icon-button (click)="decrease('adults')">
+                    <mat-icon>remove</mat-icon>
+                  </button>
+                  <span>{{ bookingForm.get('adults')?.value }}</span>
+                  <button mat-icon-button (click)="increase('adults')">
+                    <mat-icon>add</mat-icon>
+                  </button>
+                </div>
+              </mat-option>
+              <mat-option>
+                <div class="passenger-type">
+                  <mat-icon>child_care</mat-icon>
+                  <span>Children</span>
+                  <button mat-icon-button (click)="decrease('children')">
+                    <mat-icon>remove</mat-icon>
+                  </button>
+                  <span>{{ bookingForm.get('children')?.value }}</span>
+                  <button mat-icon-button (click)="increase('children')">
+                    <mat-icon>add</mat-icon>
+                  </button>
+                </div>
+              </mat-option>
+              <mat-option>
+                <div class="passenger-type">
+                  <mat-icon>baby</mat-icon>
+                  <span>Infants</span>
+                  <button mat-icon-button (click)="decrease('infants')">
+                    <mat-icon>remove</mat-icon>
+                  </button>
+                  <span>{{ bookingForm.get('infants')?.value }}</span>
+                  <button mat-icon-button (click)="increase('infants')">
+                    <mat-icon>add</mat-icon>
+                  </button>
+                </div>
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+         
+
+        <!-- Submit Button -->
+        <div class="form-row">
+          <button mat-raised-button color="primary" type="submit" >
+            <i class="fas fa-plane-departure"></i> Search Flights
+          </button>
+        </div>
+        
+      </form>
+    </mat-card-content>
+  </mat-card>
+  <router-outlet></router-outlet>
+
+  <!-- Notification Modal -->
+  <!-- <mat-dialog-content *ngIf="noAirportFoundDeparture || noAirportFoundArrival">
+    <p>No available airport found.</p>
+    <button mat-button mat-dialog-close>Close</button>
+  </mat-dialog-content> -->
+</div>

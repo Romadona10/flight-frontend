@@ -1,0 +1,29 @@
+.no-airports-card {
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 300px;
+  margin: auto;
+}
+
+.logo {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+mat-card-content {
+  font-size: 16px;
+  .sub-img{
+    width:50px ;
+  }
+  
+}
+
+mat-card-actions {
+  display: flex;
+  justify-content: center;
+}
+
+button[mat-button] {
+  color: #3f51b5;
+}

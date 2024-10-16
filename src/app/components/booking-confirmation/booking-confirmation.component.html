@@ -1,0 +1,36 @@
+<mat-card class="support-card">
+  <mat-card-content #supportCardContent>
+    <div class="support-header">
+      <img src="assets/customer-care.png" alt="Customer Support" class="support-image">
+      <h2>Customer Support</h2>
+    </div>
+
+    <p><strong>Email:</strong>{{ Email }}</p>
+    <p><strong>Phone:</strong> +234 7039007552</p>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Select an option</mat-label>
+      <mat-select (selectionChange)="handleOptionChange($event.value)">
+        <mat-option value="general">General Inquiry</mat-option>
+        <mat-option value="emergency">Emergency</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div *ngIf="selectedOption === 'general'" class="general-options">
+      <h4>Select an Issue:</h4>
+      <button mat-button [matMenuTriggerFor]="menu" color="primary">Open Menu</button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="handleGeneralIssue('Booking Not Confirmed'); closeMenu()">Booking Not Confirmed</button>
+        <button mat-menu-item (click)="handleGeneralIssue('Payment Issues'); closeMenu()">Payment Issues</button>
+        <button mat-menu-item (click)="handleGeneralIssue('Flight Rescheduling'); closeMenu()">Flight Rescheduling</button>
+        <button mat-menu-item (click)="handleGeneralIssue('Seat Selection Problem'); closeMenu()">Seat Selection Problem</button>
+      </mat-menu>
+    </div>
+
+    <p class="response-text">{{ displayedText }}</p>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-raised-button color="primary" (click)="closeModal()">Close</button>
+  </mat-card-actions>
+</mat-card>

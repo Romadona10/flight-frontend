@@ -1,0 +1,60 @@
+<div class="user-profile-container">
+  <h2>Your Booked Flights</h2>
+
+  <div *ngIf="isLoading" class="loading-container">
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    <p>Fetching booked flights from database...</p>
+  </div>
+
+  <ng-template #errorMessage>
+    <div class="error-message">
+      <p>Failed to retrieve booked flights. Please try again later.</p>
+    </div>
+  </ng-template>
+
+  <!-- Display a list of booked flights -->
+  <div class="flights-list" *ngIf="bookedFlights.length > 0; else noFlights">
+    <mat-card class="flight-card" *ngFor="let flight of bookedFlights">
+      <mat-card-header>
+        <mat-card-title>
+          Flight Number: DL123
+        </mat-card-title>
+        <mat-card-subtitle>
+          Airline: {{ flight.flightCompany }}
+        </mat-card-subtitle>
+        <mat-card-actions>
+          <button mat-icon-button (click)="deleteFlight(flight._id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-card-actions>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="flight-details">
+          <div class="airport-info">
+            <p><strong>flightId:</strong> {{ flight._id }}</p>
+            <p><strong>Departure Airport:</strong> {{ flight.departureAirport }}</p>
+            <p><strong>Arrival Airport:</strong> {{ flight.arrivalAirport }}</p>
+          </div>
+          <div class="time-info">
+            <p><strong>Departure Time:</strong> {{ flight.departureTime }}</p>
+            <p><strong>Arrival Time:</strong> {{ flight.arrivalTime }}</p>
+          </div>
+        </div>
+        <div class="additional-info">
+          <p><strong>Price:</strong> {{ flight.price | currency:'₦':'symbol' }}</p>
+          <p><strong>Selected Seats:</strong> {{ flight.selectedSeats }}</p>
+          <p><strong>Total Passengers:</strong> {{ flight.totalPassengers }}</p>
+          <p><strong>Booking ID:</strong> {{ flight.userId }}</p>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <!-- Fallback if no flights are found -->
+  <ng-template #noFlights>
+    <div class="no-flights-message">
+      <i class="fas fa-plane-departure"></i> 
+      <p>No flights booked yet.</p>
+    </div>
+  </ng-template>
+</div>

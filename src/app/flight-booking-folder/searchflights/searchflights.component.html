@@ -1,0 +1,60 @@
+<div class="flight-search-container">
+    <mat-card class="flight-search-card">
+      <mat-card-title>Flight Search</mat-card-title>
+      <mat-card-content>
+        <form [formGroup]="flightSearchForm" >onSearchFlights()"
+          <mat-form-field appearance="outline">
+            <mat-label>Departure Airport</mat-label>
+            <input matInput formControlName="departureAirport" placeholder="Enter departure airport">
+            <mat-error *ngIf="flightSearchForm.get('departureAirport')?.invalid">
+              Departure airport is required
+            </mat-error>
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline">
+            <mat-label>Arrival Airport</mat-label>
+            <input matInput formControlName="arrivalAirport" placeholder="Enter arrival airport">
+            <mat-error *ngIf="flightSearchForm.get('arrivalAirport')?.invalid">
+              Arrival airport is required
+            </mat-error>
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline">
+            <mat-label>Travel Date</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="travelDate" placeholder="Choose a date">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="flightSearchForm.get('travelDate')?.invalid">
+              Travel date is required
+            </mat-error>
+          </mat-form-field>
+  
+          <button mat-raised-button color="primary" type="submit" [disabled]="flightSearchForm.invalid || isLoading">
+            Search Flights
+          </button>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  
+    <div *ngIf="isLoading" class="loading-spinner">
+      <mat-spinner></mat-spinner>
+    </div>
+  
+    <div *ngIf="flights.length > 0" class="flight-results">
+      <mat-card *ngFor="let flight of flights" class="flight-card">
+        <mat-card-header>
+          <mat-card-title>{{ flight.airline }} - {{ flight.price }} USD</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p>Departure: {{ flight.departureTime }}</p>
+          <p>Arrival: {{ flight.arrivalTime }}</p>
+          <p>Duration: {{ flight.duration }}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  
+    <div *ngIf="!isLoading && flights.length === 0 && searchPerformed" class="no-flights-message">
+      <p>No flights available for the selected route and date.</p>
+    </div>
+  </div>
+  

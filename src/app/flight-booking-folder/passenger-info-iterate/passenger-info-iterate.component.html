@@ -1,0 +1,135 @@
+<div class="passenger-container">
+  <mat-card class="passenger-card">
+    <mat-card-title>Passenger {{ index }}</mat-card-title> <!-- Adjusting for 1-based index -->
+    <mat-card-content [formGroup]="passengerFormGroup">
+      <div class="form-row">
+        <mat-form-field appearance="outline">
+          <mat-label>Title</mat-label>
+          <mat-select formControlName="title" required>
+            <mat-option *ngFor="let title of titles" [value]="title">{{ title }}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="passengerFormGroup.get('title')?.hasError('required')">
+            Title is required
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Gender</mat-label>
+          <mat-select formControlName="Gender" required>
+            <mat-option *ngFor="let gender of Gender" [value]="gender">{{ gender }}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="passengerFormGroup.get('Gender')?.hasError('required')">
+            Gender is required
+          </mat-error>
+        </mat-form-field>
+
+      </div>
+
+      <div class="form-row">
+        <mat-form-field appearance="outline">
+          <mat-label>First Name</mat-label>
+          <input matInput formControlName="firstName" required />
+          <mat-error *ngIf="passengerFormGroup.get('firstName')?.hasError('required')">
+            First Name is required
+          </mat-error>
+          <mat-error *ngIf="passengerFormGroup.get('firstName')?.hasError('pattern')">
+            Only alphabets are allowed
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Surname</mat-label>
+          <input matInput formControlName="surName" required />
+          <mat-error *ngIf="passengerFormGroup.get('surName')?.hasError('required')">
+            Surname is required
+          </mat-error>
+          <mat-error *ngIf="passengerFormGroup.get('surName')?.hasError('pattern')">
+            Only alphabets are allowed
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="form-row">
+        <mat-form-field appearance="outline">
+          <mat-label>Date of Birth</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="dateOfBirth" required />
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error *ngIf="passengerFormGroup.get('dateOfBirth')?.hasError('required')">
+            Date of Birth is required
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Passport Number</mat-label>
+          <input matInput formControlName="passportNumber" required />
+          <mat-error *ngIf="passengerFormGroup.get('passportNumber')?.hasError('required')">
+            Passport Number is required
+          </mat-error>
+          <mat-error *ngIf="passengerFormGroup.get('passportNumber')?.hasError('pattern')">
+            Invalid Passport Number
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="form-row">
+
+        <mat-form-field appearance="outline">
+          <mat-label>Nationality</mat-label>
+          <mat-select formControlName="nationality" placeholder="Select your nationality">
+            <mat-option *ngFor="let country of countries" [value]="country.name.common">
+              <img [src]="country.flags.svg" [alt]="country.name.common + ' flag'" width="20">
+              {{ country.name.common }}
+            </mat-option>
+          </mat-select>
+          <mat-error
+            *ngIf="passengerFormGroup.get('nationality')?.invalid && passengerFormGroup.get('nationality')?.touched">
+            Nationality is required
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" required />
+          <mat-error *ngIf="passengerFormGroup.get('email')?.hasError('required')">
+            Email is required
+          </mat-error>
+          <mat-error *ngIf="passengerFormGroup.get('email')?.hasError('email')">
+            Invalid Email Address
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="form-row">
+        <mat-form-field appearance="outline">
+          <mat-label>Call-Code</mat-label>
+          <mat-select formControlName="callCode" required>
+            <mat-option *ngFor="let callCode of callCodes" [value]="callCode">
+              {{ callCode }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="passengerFormGroup.get('callCode')?.hasError('required')">
+            Call code is required
+          </mat-error>
+        </mat-form-field>
+
+
+        <mat-form-field appearance="outline">
+          <mat-label>Phone*</mat-label>
+          <input matInput formControlName="phoneNumber" required />
+          <mat-error *ngIf="passengerFormGroup.get('phoneNumber')?.hasError('required')">
+            Phone number is required.
+          </mat-error>
+          <mat-error *ngIf="passengerFormGroup.get('phoneNumber')?.hasError('pattern')">
+            Invalid Nigerian phone number.
+          </mat-error>
+        </mat-form-field>
+        
+      </div>
+    </mat-card-content>
+    <div class="passenger-info-text">
+      <mat-icon class="lightbulb-icon">lightbulb_outline</mat-icon>
+      Your e-Ticket will be sent to the email address you provide
+    </div>
+  </mat-card>
+
+</div>

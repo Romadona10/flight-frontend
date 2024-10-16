@@ -1,0 +1,68 @@
+
+.sidebar-wrapper {
+    width: 250px;
+    // background-color: #333;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    overflow-y: hidden; /* Prevent vertical scrollbar */
+    height: 100vh; /* Ensure it takes the full viewport height */
+}
+
+.user-image-profile {
+    margin-bottom: 20px;
+}
+
+.user-image-profile img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}
+
+.sidebar-tabs {
+    width: 100%;
+    flex: 1; /* Allow sidebar-tabs to grow and take available space */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+.sidebar-tabs .tab {
+    border-radius: 15px;
+    display: block;
+    padding: 15px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    background-color: aqua;
+    margin: 8px;
+    text-transform: capitalize;
+    width: 80%;
+}
+
+.sidebar-tabs .tab:hover {
+    background-color: #444;
+}
+
+.sidebar-tabs .active {
+    animation: heart-wave 1.5s infinite ease-in-out;
+    background-color: #444;
+}
+
+@keyframes heart-wave {
+    0%, 100% {
+        transform: scale(1);
+    }
+    25% {
+        transform: scale(1.1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    75% {
+        transform: scale(1.1);
+    }
+}

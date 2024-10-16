@@ -1,0 +1,50 @@
+.payment-success-card {
+  text-align: center;
+  padding: 20px;
+}
+
+.checkmark-circle {
+  width: 80px;
+  height: 80px;
+  background-color: #4caf50;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  position: relative;
+  animation: spin 2s ease-out forwards; /* Circle spin animation */
+}
+
+.checkmark {
+  width: 30px;
+  height: 55px;
+  border: solid white;
+  border-width: 0 0 6px 6px;
+  transform: rotate(45deg) scale(0); /* Rotate to face right and initially scale 0 */
+  transition: transform 0.5s ease-out 2s; /* Delayed transition for checkmark */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg) scale(0); /* Center the checkmark */
+}
+
+/* Once the circle spin completes, show the checkmark */
+.checkmark-circle.finished .checkmark {
+  transform: translate(-50%, -50%) rotate(45deg) scale(1); /* Face right and scale up */
+}
+
+mat-card-actions {
+  display: flex;
+  justify-content: center;
+}
+
+/* Animation to spin the circle */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

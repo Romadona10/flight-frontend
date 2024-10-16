@@ -1,0 +1,105 @@
+
+
+.app-wrapper {
+  display: flex;
+  height: 100vh;
+  background-image: url('/assets/home-image.webp');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+.sidebar-section {
+  width: 20%; /* Default width for larger screens */
+  background-color: rgba(255, 255, 255, 0.8); /* Optional: Add a background color */
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  transition: transform 0.3s ease; /* Smooth transition for sidebar opening and closing */
+  
+  @media (max-width: 768px) {
+    width: 100%; /* Full width on small screens */
+    position: fixed; /* Fixed position for mobile screens */
+    height: 100vh;
+    top: 0; /* Align to top */
+    left: 0; /* Align to left */
+    transform: translateX(-100%); /* Hidden by default on mobile */
+  }
+}
+
+.app-wrapper.sidebar-open .sidebar-section {
+  @media (max-width: 768px) {
+    transform: translateX(0); /* Show sidebar when open */
+  }
+}
+
+.main-section {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+
+  @media (max-width: 768px) {
+    width: 100%; /* Full width on small screens */
+  }
+}
+
+.top-section {
+  display: flex;
+  justify-content: space-between; /* Space between items */
+  align-items: center; /* Center items vertically */
+  text-align: center;
+  padding: 20px 10px; /* Adjust padding for mobile screens */
+  // color: #FDFFD2;
+  position: relative;
+
+  @media (max-width: 768px) {
+    justify-content: flex-start; /* Align items to the left on mobile */
+  }
+
+ 
+
+  .timming {
+   
+    text-align: center;
+    flex: 1;
+  }
+
+  .search-field {
+    
+    @media(max-width:768px){
+      width: 48%;
+    }
+  }
+
+  .logout {
+    @media (max-width: 768px) {
+      display: inline-block; /* Hide on small screens */
+    }
+  }
+
+  .menu-button {
+    display: none;
+
+    @media (max-width: 768px) {
+      display: block; /* Show menu button on small screens */
+      position: absolute;
+      top: 20px;
+      left: 20px; /* Position it to the left on small screens */
+    }
+  }
+}
+
+.content-section {
+  flex-grow: 1;
+  padding: 20px;
+  overflow-y: auto;
+
+  @media (max-width: 768px) {
+    padding: 10px;
+  }
+}

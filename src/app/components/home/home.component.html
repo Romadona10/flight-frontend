@@ -1,0 +1,22 @@
+<div class="home-container">
+  <mat-card>
+    <mat-card-title>Welcome to Romadona10 Airline</mat-card-title>
+    <mat-card-content>
+      <p>
+        We offer the best services to ensure your journey is comfortable, safe, and enjoyable.
+        Book your flights with us and experience top-notch service.
+      </p>
+
+      <form [formGroup]="termsForm">
+        <mat-checkbox color="primary" formControlName="agree1">I agree to the Terms of Service</mat-checkbox><br>
+        <mat-checkbox color="primary" formControlName="agree2">I agree to the Privacy Policy</mat-checkbox><br>
+        <mat-checkbox color="primary" formControlName="agree3">I agree to receive promotional emails</mat-checkbox>
+      </form>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="proceed()" [disabled]="!termsForm.valid">
+        Proceed
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

@@ -1,0 +1,23 @@
+<!-- passenger-info.component.html -->
+
+<div class="passenger-info-container">
+  <div class="form-container">
+    <form [formGroup]="passengerForm" (ngSubmit)="onSubmit()">
+      <div formArrayName="passengers">
+        <div *ngFor="let passenger of passengers.controls; let i = index">
+          <app-passenger-info-iterate 
+            [passengerFormGroup]="getPassengerFormGroup(passenger)" 
+            [index]="i + 1">
+          </app-passenger-info-iterate>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="actions">
+    <button mat-raised-button color="primary" type="submit" (click)="onSubmit()" [disabled]="passengerForm.invalid">
+      Continue to Flight Details
+    </button>
+  </div>
+</div>
+
+<!--  -->

@@ -1,0 +1,49 @@
+.home-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // height: 100vh;
+ 
+  // background-color: #f0f0f0;
+}
+
+mat-card {
+  max-width: 500px;
+  width: 100%;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px; /* Width of the scrollbar */
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Background of the scrollbar track */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #888; /* Color of the scrollbar thumb */
+    border-radius: 10px; /* Rounded corners for the scrollbar thumb */
+    border: 2px solid #f1f1f1; /* Optional border for better appearance */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Color of the scrollbar thumb on hover */
+}
+}
+
+mat-card-title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+mat-checkbox {
+  display: block;
+  margin-bottom: 10px;
+}
+
+button {
+  width: 100%;
+}

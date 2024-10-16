@@ -1,0 +1,15 @@
+mat-dialog-content {
+    h2 {
+      color: rgb(86, 240, 86);
+      margin-bottom: 1rem;
+    }
+    
+    p {
+      font-size: 1.2rem;
+    }
+  }
+  
+  mat-dialog-actions {
+    display: flex;
+    justify-content: center;
+  }

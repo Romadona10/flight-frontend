@@ -1,0 +1,39 @@
+<mat-card>
+  <mat-card-title>Select Your Seats</mat-card-title>
+  <div class="legend">
+    <div class="legend-item">
+      <img src="assets/available-seats.png" alt="Available seat" width="20" />
+      Available
+    </div>
+    <div class="legend-item">
+      <img src="assets/selected-seats.png" alt="Selected seat" width="20" />
+      Selected
+    </div>
+    <div class="legend-item">
+      <img src="assets/seat-unavailable.png" alt="Unavailable seat" width="20" />
+      Unavailable
+    </div>
+  </div>
+
+  <mat-card-content>
+    <div class="seat-grid">
+      <!-- Seat columns with A, B, C, D, E -->
+      <div *ngFor="let row of seats; let rowIndex = index">
+        <button mat-button *ngFor="let seat of row"
+          [ngClass]="{
+            'available-seat': seat.isAvailable,
+            'unavailable-seat': !seat.isAvailable,
+            'selected-seat': seat.isSelected
+          }"
+          (click)="toggleSeatSelection(seat)">
+          <span>{{ seat.row }}{{ seat.column }}</span> <!-- Display row number and column letter -->
+          <img [src]="getSeatImage(seat)" alt="Seat" />
+        </button>
+      </div>
+    </div>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-raised-button color="primary" (click)="confirmSelection()">Confirm Selection</button>
+  </mat-card-actions>
+</mat-card>

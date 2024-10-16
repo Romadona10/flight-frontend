@@ -1,1 +1,64 @@
 /* You can add global styles to this file, and also import other style files */
+// @import '~@fortawesome/fontawesome-free/css/all.min.css';
+
+
+html, body { height: 100%;
+  scroll-behavior: smooth; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+::ng-deep .mat-dialog-container {
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  mat-dialog-content {
+    font-size: 16px;
+  }
+  
+  mat-dialog-actions {
+    display: flex;
+    justify-content: center;
+  }
+  
+  button[mat-button] {
+    color: #3f51b5;
+  }
+
+  .custom-spinner .mat-spinner {
+    width: 20px; /* Adjust size as needed */
+    height: 20px; /* Adjust size as needed */
+  }
+  
+
+
+  /* Custom Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 8px; /* Width of the scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Background color of the scrollbar track */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #4158A6; /* Color of the scrollbar thumb */
+  border-radius: 30px; /* Rounded corners of the scrollbar thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #4158A6; /* Color of the scrollbar thumb on hover */
+}
+
+
+
+
+.center-modal .mat-dialog-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+}
+
+
+  

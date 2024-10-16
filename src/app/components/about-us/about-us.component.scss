@@ -1,0 +1,31 @@
+.scrollable-card {
+    max-height: 100vh;  // Adjust as needed
+    overflow-y: auto;
+    padding-right: 16px;  // Optional, to avoid the scrollbar overlapping text
+  }
+
+  mat-card-content {
+    flex-grow: 1;  // Ensures the content area takes up available space
+    padding-bottom: 16px;  // Adds extra space at the bottom
+  }
+  
+  mat-card-actions {
+    position: sticky;  // Keeps the button visible
+    bottom: 0;
+    background-color: white;  // Optional: background color to match the card
+    // padding-top: 16px;
+    padding-bottom: 16px;
+  }
+  
+  @media (max-width: 768px) {
+    .scrollable-card {
+      height: auto;  // Allows full height usage on smaller screens
+      max-height: calc(100vh - 100px);  // Ensures the card doesn’t go beyond the screen height, accounting for padding
+      overflow-y: auto;  // Enables scrolling
+    }
+  
+    mat-card-content {
+      padding-bottom: 10px;  // Adds some space for better readability on mobile
+    }
+  }
+  

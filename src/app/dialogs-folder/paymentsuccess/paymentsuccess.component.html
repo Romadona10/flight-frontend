@@ -1,0 +1,14 @@
+<!-- paymentsuccess.component.html -->
+<mat-card class="payment-success-card">
+    <mat-card-content>
+      <div class="checkmark-circle" [class.finished]="isAnimationFinished">
+        <div class="checkmark"></div>
+      </div>
+      <h2>Payment Successful!</h2>
+      <p>Enjoy your flight.</p>
+    </mat-card-content>
+    <mat-card-actions >
+      <button mat-raised-button color="primary" (click)="closeDialog()">OK</button>
+    </mat-card-actions>
+  </mat-card>
+  

@@ -1,0 +1,53 @@
+.support-card {
+    width: 400px;
+    // height: 400px;
+    padding: 20px;
+    text-align: center;
+    overflow-y: auto;
+  }
+
+  .support-card-content {
+    max-height: 300px;  // Limit content height for scrollability
+    overflow-y: auto;  // Enable vertical scrolling
+  }
+  
+  .support-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .support-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+
+  h4{
+    margin: 0;
+  }
+  
+  .general-options {
+    cursor: pointer;
+    
+    mat-list-item {
+      cursor: pointer;
+      transition: color 0.3s ease; /* Smooth color transition on hover */
+    }
+  
+    mat-list-item:hover {
+      color: cyan;
+    }
+  }
+  .response-text {
+    margin-top: 20px;
+    font-size: 16px;
+    font-style: italic;
+  }
+
+  mat-card-actions{
+    display: flex;
+    justify-content: center;
+  }
+  

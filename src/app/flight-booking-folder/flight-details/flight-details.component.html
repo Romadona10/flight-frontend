@@ -1,0 +1,61 @@
+<div *ngIf="departureAirportDetails && arrivalAirportDetails" >
+  <!-- <h3>Flight Options from {{ departureAirportDetails.name }} ({{ departureAirportDetails.country }}) 
+      to {{ arrivalAirportDetails.name }},{{ arrivalAirportDetails.country }}</h3> -->
+  
+  <div class="fare-card-container">
+    <mat-card 
+      class="fare-card" 
+      *ngFor="let flight of flightOptions; let i = index"
+      [class.selected]="selectedFlightIndex === i"
+      (click)="selectFlight(i)"
+    >
+      <div class="fare-details">
+        <div class="flight-info">
+          <div class="flight-company">
+            <img [src]="flight.logoUrl" alt="{{ flight.airlineName }} Logo" class="flight-logo">
+            <span class="company-name">{{ flight.airlineName }}</span>
+          </div>
+          <div class="flight-times">
+            <div class="time-info">
+              <span class="time">Departure: {{ flight.departureTime }}</span>
+              <span class="airport">{{ departureAirportDetails.name }},{{ departureAirportDetails.country }}</span>
+            </div>
+            <div class="time-info">
+              <span class="time">Arrival: {{ flight.arrivalTime }}</span>
+              <span class="airport">{{ arrivalAirportDetails.name }},{{ arrivalAirportDetails.country }}</span>
+            </div>
+          </div>
+        </div>
+        <div class="fare-summary">
+          <div class="fare-row total">
+            <span>Total Fare:</span>
+            <span class="amount">{{ flight.totalFare | currency:'₦' }}</span>
+          </div>
+        </div>
+      </div>
+      <mat-card-actions>
+        <button 
+          mat-raised-button 
+          color="primary" 
+          *ngIf="selectedFlightIndex === i"
+        >
+          Selected
+        </button>
+      </mat-card-actions>
+      <div class="selected-status" *ngIf="selectedFlightIndex === i">
+        <span>✔️ Selected</span>
+      </div>
+    </mat-card>
+  </div>
+
+  <!-- Confirmation button -->
+  <div class="confirm-selection" *ngIf="selectedFlightIndex !== null">
+    <button mat-raised-button color="accent" (click)="confirmSelection()">
+      Confirm Selection and Continue
+    </button>
+  </div>
+</div>
+<div *ngIf="!departureAirportDetails || !arrivalAirportDetails">
+  Loading or missing airport data...
+
+</div>
