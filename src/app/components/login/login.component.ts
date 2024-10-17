@@ -12,11 +12,11 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class LoginComponent implements OnInit {
   private backgroundImages: string[] = [
-    '/assets/plane1.webp',
-    '/assets/plane4.webp',
-    '/assets/plane5.jpg',
-    '/assets/plane6.jpg',
-    '/assets/plane8.jpg'
+    '../assets/plane1.webp',
+    '../assets/plane4.webp',
+    '../assets/plane5.jpg',
+    '../assets/plane6.jpg',
+    '../assets/plane8.jpg'
   ];
 
   loginForm!: FormGroup;
